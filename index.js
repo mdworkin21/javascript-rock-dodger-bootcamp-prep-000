@@ -16,31 +16,21 @@ var gameInterval = null
 
 function checkCollision(rock) {
         const top = positionToInteger(rock.style.top)
+
+
+      if (top > 360) {
         const dodgerLeftEdge = positionToInteger(DODGER.style.left)
         const dodgerRightEdge = dodgerLeftEdge + 40;
         const rockLeftEdge = positionToInteger(rock.style.left)
         const rockRightEdge = rockLeftEdge + 20;
-
-      if (top > 360) {
-        if ((dodgerLeftEdge > rockRightEdge) || (dodgerRightEdge < rockLeftEdge)){
-          console.log("1")
-           return false
-
-         } else if ((dodgerRightEdge > rockLeftEdge) && (dodgerRightEdge < rockRightEdge)){
-             console.log("2")
+        if ((dodgerLeftEdge < rockRightEdge) && (dodgerLeftEdge > rockLeftEdge) ||
+            (dodgerRightEdge > rockLeftEdge) && (dodgerRightEdge < rockRightEdge) ||
+            (dodgerRightEdge > rockRightEdge) && (dodgerLeftEdge < rockLeftEdge)){
+             console.log("4")
              return true
 
-         } else if ((dodgerRightEdge > rockRightEdge) && (dodgerLeftEdge < rockLeftEdge)){
-             console.log("3")
-             return true
-
-         } else if ((dodgerLeftEdge < rockRightEdge) && (dodgerLeftEdge > rockLeftEdge)){
-               console.log("4")
-               return true
+           }
          }
-              { return true
-            }
-          }
       }
 
 
@@ -96,9 +86,6 @@ function endGame() {
   alert("YOU LOSE!")
 
   }
-
-
-
 
 function moveDodger(e) {
 
@@ -157,6 +144,6 @@ function start() {
 }
 
 /*INVOKE FUNCTIONS HERE */
-checkCollision();
-createRock();
-moveDodger();
+//checkCollision();
+//createRock();
+//moveDodger();
